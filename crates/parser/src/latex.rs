@@ -855,6 +855,9 @@ impl<'a> Parser<'a> {
         self.builder.start_node(LABEL_DEFINITION.into());
         self.eat();
         self.trivia();
+        if self.lexer.peek() == Some(Token::LBrack) {
+            self.brack_group_word();
+        }
         if self.lexer.peek() == Some(Token::LCurly) {
             self.curly_group_word();
         }
